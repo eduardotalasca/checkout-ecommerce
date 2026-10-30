@@ -1,11 +1,19 @@
 // ===== SEÇÃO 1: CARRINHO (laços de repetição) =====
 
 function calcularSubtotal(itens) {
-  // TODO
+  let subtotal = 0;
+  for(let i=0;i < itens.length; i++) {
+    subtotal += itens[i].preco * itens[i].quantidade;
+  }
+  return subtotal;
 }
 
 function contarItens(itens) {
-  // TODO
+  let total = 0 
+    for (let i=0; i < itens.length; i++) {
+      total += itens.quantidade;
+    }
+    return total;
 }
 
 
@@ -24,6 +32,7 @@ function aplicarCupom(subtotal, codigoCupom) {
     console.log('cupom, inválido')
   }
   return cupom 
+
 }
 
 
