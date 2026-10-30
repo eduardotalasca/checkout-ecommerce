@@ -11,15 +11,29 @@ function contarItens(itens) {
 
 // ===== SEÇÃO 2: CUPOM (estruturas condicionais) =====
 
-function aplicarCupom(subtotal, codigo) {
-  // TODO
+function aplicarCupom(subtotal, codigoCupom) {
+  let cupom
+  if (codigoCupom === 'DESC10'){
+    cupom = subtotal * 0.10
+  }else if(codigoCupom === 'DESC20', subtotal <= 200) {
+    cupom = subtotal * 0.20
+  } else if(codigoCupom === 'FRETEGRATIS') {
+    cupom = subtotal - 15
+  } else {
+    cupom = 0
+    console.log('cupom, inválido')
+  }
+  return cupom 
 }
 
 
 // ===== SEÇÃO 3: CHECKOUT (integração) =====
 
 function finalizarCompra(itens, codigoCupom) {
-  return { subtotal: 0, desconto: 0, total: 0 }; // TODO: integrar carrinho e cupom
+  let subtotal = calcularSubtotal(itens);
+  let desconto = aplicarCupom(subtotal, codigoCupom)
+  let total = (subtotal - desconto)
+  return { subtotal: subtotal, desconto: desconto, total: total };
 }
 
 
