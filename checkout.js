@@ -20,6 +20,18 @@ function contarItens(itens) {
 // ===== SEÇÃO 2: CUPOM (estruturas condicionais) =====
 
 function aplicarCupom(subtotal, codigoCupom) {
+  let cupom
+  if (codigoCupom === 'DESC10'){
+    cupom = subtotal * 0.10
+  }else if(codigoCupom === 'DESC20', subtotal <= 200) {
+    cupom = subtotal * 0.20
+  } else if(codigoCupom === 'FRETEGRATIS') {
+    cupom = subtotal - 15
+  } else {
+    cupom = 0
+    console.log('cupom, inválido')
+  }
+  return cupom 
 
 }
 
@@ -28,7 +40,9 @@ function aplicarCupom(subtotal, codigoCupom) {
 
 function finalizarCompra(itens, codigoCupom) {
   let subtotal = calcularSubtotal(itens);
-  return { subtotal: subtotal, desconto: 0, total: 0 }; // TODO: integrar carrinho e cupom
+  let desconto = aplicarCupom(subtotal, codigoCupom)
+  let total = (subtotal - desconto)
+  return { subtotal: subtotal, desconto: desconto, total: total };
 }
 
 
